@@ -7,6 +7,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/About" />
+            <option value="$PROJECT_DIR$/Core" />
+            <option value="$PROJECT_DIR$/Inventory" />
           </set>
         </option>
         <option name="myGradleHome" value="C:\Users\Abcom\Downloads\gradle-8.10.2-bin\gradle-8.10.2" />
