@@ -1,4 +1,4 @@
-package core.pages;
+package core.pageObjects;
 
 public class LoginPage {
 }
