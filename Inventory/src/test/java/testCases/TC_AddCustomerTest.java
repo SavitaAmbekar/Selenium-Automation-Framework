@@ -3,17 +3,16 @@ package testCases;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.AddCustomerPage;
-import pageObjects.CustomerHomePage;
 import pageObjects.HomePage;
 import testBase.BaseTest;
 
-public class TC_LoginTest extends BaseTest {
+public class TC_AddCustomerTest extends BaseTest {
     @Test
     public void Login() {
         try {
             HomePage homePage = new HomePage(driver);
             homePage.clickBankManagerLoginButton();
-            logger.info("*** TC_Login test started ****");
+            logger.info("*** TC_add customer test started ****");
             homePage.clickAddCustomerButton();
 
             String firstNameVal = properties.getProperty("firstName");
@@ -25,7 +24,7 @@ public class TC_LoginTest extends BaseTest {
             addCustomerPage.clickOnAddCustomerButton();
 
             Assert.assertTrue(addCustomerPage.getAlertMessageAndAccept().contains("Customer added successfully with customer id"));
-            logger.info("*** TC_Login test completed ****");
+            logger.info("*** TC_add customer test completed ****");
         } catch (Exception e) {
             Assert.fail();
         }
