@@ -10,15 +10,14 @@ import utilities.DataProviders;
 public class TC_Login_DDTTest extends BaseTest {
 
         @Test(dataProvider = "LoginData", dataProviderClass = DataProviders.class)
-        public void Login(String firstNameVal, String lastNameVal, String response) {
+        public void Login(String userNameVal, String response) {
         try {
             HomePage homePage = new HomePage(driver);
             homePage.clickOnCustomerLoginButton();
             logger.info("*** TC_Login test started ****");
 
             CustomerHomePage customerHomePage = new CustomerHomePage(driver);
-            String user = firstNameVal + lastNameVal;
-            customerHomePage.selectUserFromDropDown(user);
+            customerHomePage.selectUserFromDropDown(userNameVal);
 
             if (response.equalsIgnoreCase("valid")){
                 if (customerHomePage.checkLoginButtonVisible() == true)
