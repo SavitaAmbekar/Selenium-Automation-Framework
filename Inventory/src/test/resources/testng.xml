@@ -4,7 +4,7 @@
     <test thread-count="1" name="Test">
         <parameter name="browser" value="chrome"></parameter>
         <classes>
-            <class name="testCases.TC_Login_DDTTest"/>
+            <class name="testCases.CheckProduct"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

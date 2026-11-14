@@ -21,29 +21,29 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void setFirstName(String firstNameValue) {
+    @Override
+    public boolean isPageLoaded() {
+        return driver.findElement(firstName).isDisplayed();
+    }
 
-        driver.findElement(firstName).sendKeys(firstNameValue);
+    public void setFirstName(String firstNameValue) {
+        enterText(firstName,firstNameValue);
     }
 
     public void setLastName(String lastNameValue) {
-
-        driver.findElement(lastName).sendKeys(lastNameValue);
+        enterText(lastName,lastNameValue);
     }
 
     public void setEmail(String emailValue) {
-
-        driver.findElement(email).sendKeys(emailValue);
+        enterText(email,emailValue);
     }
 
     public void setPassword(String passwordValue) {
-
-        driver.findElement(password).sendKeys(passwordValue);
+        enterText(password,passwordValue);
     }
 
     public void setCheckboxReadingHobby() {
-
-        driver.findElement(checkboxReadingHobby).click();
+        clickElement(checkboxReadingHobby);
     }
 
     public void selectValueFromGenderDropdown(String genderValue) {
@@ -53,11 +53,11 @@ public class LoginPage extends BasePage {
     }
 
     public void setTextBoxAboutYourself(String value) {
-        driver.findElement(textBoxAboutYourself).sendKeys(value);
+        enterText(textBoxAboutYourself,value);
     }
 
     public void clickOnRegisterButton() {
-        driver.findElement(registerButton).click();
+        clickElement(registerButton);
     }
 
     public String getSuccessMessage() {

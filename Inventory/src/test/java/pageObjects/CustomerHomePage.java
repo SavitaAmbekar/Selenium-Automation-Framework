@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,11 +9,18 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CustomerHomePage extends BasePage {
     public CustomerHomePage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public boolean isPageLoaded() {
+        return driver.findElement(loginButton).isDisplayed();
     }
 
     private By userSelectDropdown = By.id("userSelect");
@@ -38,6 +46,23 @@ public class CustomerHomePage extends BasePage {
 
     public void clickOnLogoutButton()
     {
-        driver.findElement(logoutButton).click();
+        clickElement(logoutButton);
+    }
+
+    public void check()
+    {
+        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+
+        List<WebElement> list = driver.findElements(By.xpath("//*[@class='inventory_item_label']"));
+        List<String> stringList = new ArrayList<>();
+
+        for (WebElement w : list)
+        {
+            stringList.add(w.getText());
+        }
+
+        Collections.sort(stringList);
     }
 }

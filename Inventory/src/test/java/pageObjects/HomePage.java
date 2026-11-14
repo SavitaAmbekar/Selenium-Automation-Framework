@@ -9,6 +9,11 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+    @Override
+    public boolean isPageLoaded() {
+        return driver.findElement(customerLoginButton).isDisplayed();
+    }
+
     private By sampleFormButton = By.xpath("//a[@href=\"https://www.way2automation.com/angularjs-protractor/banking/registrationform.html\"]");
     private By bankManagerLoginButton = By.xpath("//button[@ng-click='manager()']");
     private By addCustomerButton = By.xpath("//button[@ng-click='addCust()']");
@@ -16,23 +21,23 @@ public class HomePage extends BasePage {
     private By customerLoginButton = By.xpath("//button[@ng-click='customer()']");
 
     public void clickSampleFormButton() {
-        driver.findElement(sampleFormButton).click();
+        clickElement(sampleFormButton);
     }
 
     public void clickBankManagerLoginButton() {
-        driver.findElement(bankManagerLoginButton).click();
+        clickElement(bankManagerLoginButton);
     }
 
     public void clickAddCustomerButton() {
-        driver.findElement(addCustomerButton).click();
+        clickElement(addCustomerButton);
     }
 
     public void clickOnHomeButton() {
-        driver.findElement(homeButton).click();
+        clickElement(homeButton);
     }
 
     public void clickOnCustomerLoginButton() {
-        driver.findElement(customerLoginButton).click();
+        clickElement(customerLoginButton);
     }
 
 }

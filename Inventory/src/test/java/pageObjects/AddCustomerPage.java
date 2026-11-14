@@ -14,25 +14,30 @@ public class AddCustomerPage extends BasePage {
         super(driver);
     }
 
+    @Override
+    public boolean isPageLoaded() {
+        return driver.findElement(addCustomerButton).isDisplayed();
+    }
+
     private By firstName = By.xpath("//input[@ng-model='fName']");
     private By lastName = By.xpath("//input[@ng-model='lName']");
     private By postCode = By.xpath("//input[@ng-model='postCd']");
     private By addCustomerButton = By.xpath("//button[text()=\"Add Customer\"]");
 
     public void setFirstName(String firstNameValue) {
-        driver.findElement(firstName).sendKeys(firstNameValue);
+        enterText(firstName,firstNameValue);
     }
 
     public void setLastName(String lastNameValue) {
-        driver.findElement(lastName).sendKeys(lastNameValue);
+        enterText(lastName,lastNameValue);
     }
 
     public void setPostCode(String postCodeValue) {
-        driver.findElement(postCode).sendKeys(postCodeValue);
+        enterText(postCode,postCodeValue);
     }
 
     public void clickOnAddCustomerButton() {
-        driver.findElement(addCustomerButton).click();
+        clickElement(addCustomerButton);
     }
 
     public String getAlertMessageAndAccept() {
