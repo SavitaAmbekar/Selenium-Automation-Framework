@@ -10,15 +10,25 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 
 public class BaseTest {
     public WebDriver driver;
     public Logger logger;
+    public Properties properties;
 
     @BeforeMethod
     @Parameters({"browser"})
-    public void setUp(String browser) {
+    public void setUp(String browser) throws IOException {
+        FileReader file = new FileReader("./src/test/resources/config.properties");
+        properties = new Properties();
+        properties.load(file);
+
         logger = LogManager.getLogger(this.getClass());
 
         switch (browser.toLowerCase()) {
@@ -36,7 +46,7 @@ public class BaseTest {
         }
 
         driver.manage().window().maximize();
-        driver.get("https://www.way2automation.com/angularjs-protractor/banking/#/login");
+        driver.get(properties.getProperty("appUrl"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
     }
 
