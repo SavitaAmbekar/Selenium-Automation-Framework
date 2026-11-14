@@ -61,7 +61,12 @@ public class LoginPage extends BasePage {
     }
 
     public String getSuccessMessage() {
-        String successMessage = driver.findElement(successMsg).getText();
-        return successMessage;
+        try {
+            String successMessage = driver.findElement(successMsg).getText();
+            return successMessage;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
